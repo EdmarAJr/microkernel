@@ -1,60 +1,9 @@
-//package br.edu.ifba.inf008.model;
-//
-//public class Loan {
-//    private int loanId;
-//    private int readerId;
-//    private int bookId;
-//    private String loanDate;
-//    private String dueDate;
-//
-//    public Loan(int loanId, int readerId, int bookId, String loanDate, String dueDate) {
-//        this.loanId = loanId;
-//        this.readerId = readerId;
-//        this.bookId = bookId;
-//        this.loanDate = loanDate;
-//        this.dueDate = dueDate;
-//    }
-//
-//    public int getLoanId() {
-//        return loanId;
-//    }
-//
-//    public int getReaderId() {
-//        return readerId;
-//    }
-//
-//    public int getBookId() {
-//        return bookId;
-//    }
-//
-////    public String getLoanDate() {
-////        return loanDate;
-////    }
-////
-////    public String getDevolutionDate() {
-////        return dueDate;
-////    }
-////
-////    public void setDevolutionDate(String devolutionDate) {
-////        this.dueDate = dueDate;
-////    }
-//
-//    @Override
-//    public String toString() {
-//        return "Loan ID: " + loanId + " - Reader ID: " + readerId + " - Book ID: " + bookId + " - Loan Date: " + loanDate + " - Devolution Date: " + dueDate;
-//    }
-//
-////    @Override
-////    public String toString() {
-////        return "Loan: " + book.getTitle() + " to " + user.getName() + " (Due: " + dueDate + ")";
-////    }
-//}
-
 package br.edu.ifba.inf008.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import static br.edu.ifba.inf008.persistence.DataPersistence.bookMap;
 import static br.edu.ifba.inf008.persistence.DataPersistence.loanMap;
@@ -74,8 +23,7 @@ public class Loan implements Serializable {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        /*esta validação estava atrapalhando*/
-//&& (loanMap.putIfAbsent(reader.getEmail().trim(), this) == null)
+
         if (reader != null && book != null && loanDate != null) {
             this.loanId = ++loanIdIncrement;
             this.reader = reader;
@@ -103,15 +51,9 @@ public class Loan implements Serializable {
         return details;
     }
 
-    public String getReaderEmail() {
-        System.out.println("Teste de READER EMAIL em Loan");
-        System.out.println("Reader email: " + this.reader.getEmail());
-        return this.reader.getEmail();
-    }
+    public String getReaderEmail() { return this.reader.getEmail(); }
 
     public Book getBook() { return book; }
-
-    public LocalDate getLoanDate() { return loanDate; }
 
     public LocalDate getDueDate() { return dueDate; }
 
@@ -131,6 +73,15 @@ public class Loan implements Serializable {
         return "Loan: " + reader.getFirstName() + " " + reader.getlastName() + " borrowed " + book.getTitle() + " on " + loanDate + " due on " + dueDate;
     }
 
-    public int getLoanId() { return loanId;   }
+    public Reader getReader() { return reader; }
 
+    public String getFullName() { return reader.getFirstName() + " " + reader.getlastName(); }
+
+    public void getLoans() {
+        for (List<Loan> loans : loanMap.values()) {
+            for (Loan loan : loans) {
+                System.out.println(loan.getLoanDetails());
+            }
+        }
+    }
 }

@@ -1,0 +1,13 @@
+br\edu\ifba\inf008\shell\Core.class
+br\edu\ifba\inf008\model\Reader.class
+br\edu\ifba\inf008\model\Loan.class
+br\edu\ifba\inf008\shell\IOController.class
+br\edu\ifba\inf008\model\Fine.class
+br\edu\ifba\inf008\shell\PluginController$1.class
+br\edu\ifba\inf008\shell\AuthenticationController.class
+br\edu\ifba\inf008\model\User.class
+br\edu\ifba\inf008\shell\PluginController.class
+br\edu\ifba\inf008\model\Book.class
+br\edu\ifba\inf008\shell\UIController.class
+br\edu\ifba\inf008\App.class
+br\edu\ifba\inf008\persistence\DataPersistence.class

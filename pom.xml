@@ -11,7 +11,8 @@
     <modules>
         <module>interfaces</module>
         <module>app</module>
-        <module>plugins/myplugin</module>
+	    <module>plugins/borrowedbooksreport</module>
+	    <module>plugins/overduebooksreport</module>
     </modules>
 
     <properties>

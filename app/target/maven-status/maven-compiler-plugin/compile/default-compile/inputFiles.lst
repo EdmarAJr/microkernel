@@ -1,6 +1,12 @@
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/App.java
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/shell/AuthenticationController.java
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/shell/Core.java
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/shell/IOController.java
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/shell/PluginController.java
-/workspaces/microkernel/app/src/main/java/br/edu/ifba/inf008/shell/UIController.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\App.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\model\Book.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\model\Fine.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\model\Loan.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\model\Reader.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\model\User.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\persistence\DataPersistence.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\shell\AuthenticationController.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\shell\Core.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\shell\IOController.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\shell\PluginController.java
+C:\Users\trova\Área de Trabalho\microkernel\app\src\main\java\br\edu\ifba\inf008\shell\UIController.java

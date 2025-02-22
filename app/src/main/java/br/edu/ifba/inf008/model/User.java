@@ -1,16 +1,4 @@
 package br.edu.ifba.inf008.model;
-
-/*import br.edu.ifba.inf008.model.Book;
-import java.io.Serializable;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
-import java.util.ArrayList;*/
-
-import br.edu.ifba.inf008.model.Book;
 import static br.edu.ifba.inf008.persistence.DataPersistence.userMap;
 
 import java.io.Serializable;
@@ -20,8 +8,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
-import java.util.ArrayList;
-
 
 public abstract class User implements Serializable {
     private static int idIncrement = 0;
@@ -71,12 +57,6 @@ public abstract class User implements Serializable {
         }
     }
 
-    public static List<User> loadUsers(String fileName) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            return (List<User>) ois.readObject();
-        }
-    }
-
     protected void display() {
 
         System.out.println("name: " + this.firstName + " " + this.lastName);
@@ -89,5 +69,11 @@ public abstract class User implements Serializable {
                 "Last name: " + this.lastName + "\n" +
                 "Email: " + this.email + "\n";
         return details;
+    }
+
+    public static List<User> loadUsers(String fileName) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            return (List<User>) ois.readObject();
+        }
     }
 }

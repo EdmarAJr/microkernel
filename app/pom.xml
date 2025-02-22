@@ -17,16 +17,6 @@
             <artifactId>interfaces</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>17.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>17.0.2</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -41,12 +31,6 @@
 		    <!--<arguments>
                         <argument>arg1</argument>
 		    </arguments>-->
-<!--                    <arguments>-->
-<!--                        <argument>&#45;&#45;module-path</argument>-->
-<!--                        //<argument>${javafx.module.path}</argument>-->
-<!--                        <argument>&#45;&#45;add-modules</argument>-->
-<!--                        <argument>javafx.controls,javafx.fxml</argument>-->
-<!--                    </arguments>-->
                 </configuration>
             </plugin>
         </plugins>

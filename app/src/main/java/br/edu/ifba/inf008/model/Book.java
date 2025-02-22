@@ -1,14 +1,5 @@
 package br.edu.ifba.inf008.model;
 
-/*import java.io.Serializable;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
-import java.util.ArrayList;*/
-
 import java.io.Serializable;
 import java.io.IOException;
 import java.io.FileInputStream;
@@ -61,17 +52,6 @@ public class Book implements Serializable {
         return title + " by " + author + " (" + year + ") - " + (isBorrowed ? "Borrowed" : "Available");
     }
 
-//    public String getBookDetails() {
-//        StringBuilder details = new StringBuilder();
-//        details.append("ISBN: ").append(isbn).append("\n")
-//                .append("Title: ").append(title).append("\n")
-//                .append("Author: ").append(author).append("\n")
-//                .append("Genre: ").append(genre).append("\n")
-//                .append("Year: ").append(year).append("\n")
-//                .append("Status: ").append(isBorrowed ? "Borrowed" : "Available");
-//        return details.toString();
-//    }
-
     public String getBookDetails() {
         String details = "ISBN: " + isbn + "\n" +
                 "Title: " + title + "\n" +
@@ -93,28 +73,4 @@ public class Book implements Serializable {
             return (List<Book>) ois.readObject();
         }
     }
-
-
-
-    //    public String getIsbn() {
-//        return isbn;
-//    }
-//
-//    public void setIsbn(String isbn) {
-//        this.isbn = isbn;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public void setAuthor(String author) {
-//        this.author = author;
-//    }
-
-
 }

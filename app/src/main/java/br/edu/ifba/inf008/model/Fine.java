@@ -1,6 +1,8 @@
 package br.edu.ifba.inf008.model;
 
-public class Fine {
+import java.io.Serializable;
+
+public class Fine implements Serializable {
     private Reader reader;
     private double amount;
 
