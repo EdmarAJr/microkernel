@@ -15,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
+
+import java.util.Comparator;
 import java.util.List;
 
 public class BorrowedBooksReport implements IPlugin {
@@ -56,11 +58,10 @@ public class BorrowedBooksReport implements IPlugin {
 
     public String generateReport() {
         StringBuilder report = new StringBuilder("\n");
-        for (List<Loan> loans : DataPersistence.getLoanMap().values()) {
-            for (Loan loan : loans) {
-                report.append(loan.getLoanDetails()).append("\n");
-            }
-        }
+        DataPersistence.getLoanMap().values().stream()
+                .flatMap(List::stream)
+                .sorted(Comparator.comparing(Loan::getLoanId))
+                .forEach(loan -> report.append(loan.getLoanDetails()).append("\n"));
         return report.toString();
     }
 }

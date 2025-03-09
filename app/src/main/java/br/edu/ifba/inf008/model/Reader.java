@@ -16,13 +16,15 @@ public class Reader extends User {
     }
 
     @Override
-    public void display() {
-        super.display();
-    }
+    public void display() { super.display();   }
 
-    public List<Loan> getLoans() {
-        return loans;
-    }
+    public void payFines() { this.fines.clear(); }
+
+    public List<Fine> getFines() { return fines; }
+
+    public void addFine(Fine fine) { this.fines.add(fine); }
+
+    public List<Loan> getLoans() { return loans; }
 
     public boolean borrowBook(Book book, LocalDate loanDate) {
         if (this.loans.size() < 5 && !this.loans.contains(book) && !book.isBorrowed()) {
@@ -46,18 +48,6 @@ public class Reader extends User {
         return false;
     }
 
-    public void payFines() {
-        this.fines.clear();
-    }
-
-    public List<Fine> getFines() {
-        return fines;
-    }
-
-    public void addFine(Fine fine) {
-        this.fines.add(fine);
-    }
-
     @Override
     public String toString() {
         StringBuilder loanList = new StringBuilder();
@@ -74,5 +64,4 @@ public class Reader extends User {
         }
         return totalFine;
     }
-
 }

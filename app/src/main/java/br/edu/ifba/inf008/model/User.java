@@ -34,31 +34,15 @@ public abstract class User implements Serializable {
         }
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getFirstName() { return firstName; }
 
-    public String getlastName() {
-        return lastName;
-    }
+    public String getlastName() { return lastName; }
 
-    public String getEmail() {
-        return email;
-    }
-
-
-    public static void saveUsers(List<User> users, String fileName) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            oos.writeObject(users);
-        }
-    }
+    public String getEmail() { return email; }
 
     protected void display() {
-
         System.out.println("name: " + this.firstName + " " + this.lastName);
         System.out.println("email: " + this.email);
     }
@@ -69,11 +53,5 @@ public abstract class User implements Serializable {
                 "Last name: " + this.lastName + "\n" +
                 "Email: " + this.email + "\n";
         return details;
-    }
-
-    public static List<User> loadUsers(String fileName) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            return (List<User>) ois.readObject();
-        }
     }
 }

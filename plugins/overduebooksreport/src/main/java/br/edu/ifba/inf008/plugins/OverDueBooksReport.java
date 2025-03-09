@@ -21,7 +21,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class OverDueBooksReport implements IPlugin {
-
     @Override
     public boolean init() {
         IUIController uiController = ICore.getInstance().getUIController();
@@ -67,9 +66,13 @@ public class OverDueBooksReport implements IPlugin {
                 if (dueDate.isBefore(today)) {
                     long daysLate = ChronoUnit.DAYS.between(dueDate, today);
                     double fineAmount = daysLate * 0.5;
-                    report.append("Book: ").append(loan.getBook().getTitle()).append("\n").append("\t")
-                            .append("Full name: ").append(loan.getFullName()).append("\n").append("\t")
+                    report.append("Loan information ").append("\n")
+                            .append("    Book").append("\n").append("\t")
+                            .append("Title").append(loan.getBook().getTitle()).append("\n").append("\t")
+                            .append("Author: ").append(loan.getBook().getAuthor()).append("\n")
+                            .append("    Reader: ").append("\n").append("\t")
                             .append("Email reader: ").append(loan.getReader().getEmail()).append("\n").append("\t")
+                            .append("Full name: ").append(loan.getFullName()).append("\n").append("\t")
                             .append("Days late: ").append(daysLate).append("\n").append("\t")
                             .append("Fine: $").append(fineAmount).append("\n\n");
                 }

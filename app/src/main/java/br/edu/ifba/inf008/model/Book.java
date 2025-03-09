@@ -1,12 +1,6 @@
 package br.edu.ifba.inf008.model;
 
 import java.io.Serializable;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
 import java.util.Random;
 
 import static br.edu.ifba.inf008.persistence.DataPersistence.bookMap;
@@ -60,17 +54,5 @@ public class Book implements Serializable {
                 "Year: " + year + "\n" +
                 "Status: " + (isBorrowed ? "Borrowed" : "Available") + "\n";
         return details;
-    }
-
-    public static void saveBooks(List<Book> books, String fileName) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            oos.writeObject(books);
-        }
-    }
-
-    public static List<Book> loadBooks(String fileName) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            return (List<Book>) ois.readObject();
-        }
     }
 }

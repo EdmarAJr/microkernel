@@ -15,6 +15,7 @@ public class Loan implements Serializable {
     private Book book;
     private LocalDate loanDate;
     private LocalDate dueDate;
+    private LocalDate retunDate;
 
     public Loan(Reader reader, Book book, LocalDate loanDate) {
         try {
@@ -31,31 +32,31 @@ public class Loan implements Serializable {
             this.loanDate = loanDate;
             this.dueDate = loanDate.plusDays(14);
             if (bookMap.get(book.getTitle()) != null) {
-                if (bookMap.get(book.getTitle()).isBorrowed()) System.out.println("BOOK ALREADY BORROWED!");
-                else bookMap.get(book.getTitle()).borrow();
-            } else System.out.println("BOOK NOT REGISTERED!");
-        } else {
+                if (bookMap.get(book.getTitle()).isBorrowed())
+                    System.out.println("BOOK ALREADY BORROWED!");
+                else
+                    bookMap.get(book.getTitle()).borrow();
+                retunDate = null;
+            } else
+                System.out.println("BOOK NOT REGISTERED!");
+        } else
             System.out.println("LOAN FAILURE!");
-        }
+
     }
 
-    public String getLoanDetails() {
-        String details = "Loan id: " + loanId + "\n" +
-                "   Reader id: " + this.reader.getId() + "\n" +
-                "   Name: " + this.reader.getFirstName() + " " + this.reader.getlastName() + "\n" +
-                "   Email: " + this.reader.getEmail() + "\n" +
-                "   ISBN: " + book.getIsbn() + "\n" +
-                "   Book: " + book.getTitle() + "\n" +
-                "Loan date: " + loanDate + "\n" +
-                "Due date: " + dueDate + "\n";
-        return details;
-    }
+    public int getLoanId() { return loanId; }
 
     public String getReaderEmail() { return this.reader.getEmail(); }
 
     public Book getBook() { return book; }
 
     public LocalDate getDueDate() { return dueDate; }
+
+    public Reader getReader() { return reader; }
+
+    public void returnDate() { this.retunDate = LocalDate.now(); }
+
+    public String getFullName() { return reader.getFirstName() + " " + reader.getlastName(); }
 
     public long getOverdueDays() {
         LocalDate today = LocalDate.now();
@@ -70,12 +71,28 @@ public class Loan implements Serializable {
 
     @Override
     public String toString() {
-        return "Loan: " + reader.getFirstName() + " " + reader.getlastName() + " borrowed " + book.getTitle() + " on " + loanDate + " due on " + dueDate;
+        return "Loan: " +
+                reader.getFirstName() +
+                " " + reader.getlastName() +
+                " borrowed " + book.getTitle() +
+                " on " + loanDate +
+                " due on " + dueDate;
     }
 
-    public Reader getReader() { return reader; }
-
-    public String getFullName() { return reader.getFirstName() + " " + reader.getlastName(); }
+    public String getLoanDetails() {
+        String details = "Loan id: " + loanId + "\n" +
+                "   Reader id: " + this.reader.getId() + "\n" +
+                "   Name: " + this.reader.getFirstName() + " " + this.reader.getlastName() + "\n" +
+                "   Email: " + this.reader.getEmail() + "\n" +
+                "   ISBN: " + book.getIsbn() + "\n" +
+                "   Book: " + book.getTitle() + "\n" +
+                "Loan date: " + loanDate + "\n" +
+                "Due date: " + dueDate + "\n";
+        if (retunDate != null) {
+            details += "Return date: " + retunDate + "\n";
+        }
+        return details;
+    }
 
     public void getLoans() {
         for (List<Loan> loans : loanMap.values()) {

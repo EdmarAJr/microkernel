@@ -29,25 +29,6 @@ public class DataPersistence {
     private static ObjectOutputStream oos;
     private static final String FILE_PATH = "persistence.dat";
 
-    // apagar depois dos testes
-    static {
-        addUser(new Reader("Admin", "admin", "admin@email.com"));
-        addUser(new Reader("Leitor", "numero 1", "cliente@email.com"));
-        addUser(new Reader("Edmar", "Amorim", "edmar@email.com"));
-    }
-
-    static {
-        addBook(new Book ("Descubra seus pontos fortes 2.0", "Don Clifton", "Auto ajuda", 2019));
-        addBook(new Book ("Descubra seus pontos fortes 4.0", "Don Clifton", "Auto ajuda", 2020));
-        addBook(new Book ("Entendendo algoritmos", "Aditya Y. Bhargava", "Ciência da computação", 2017));
-        addBook(new Book ("Estrutura de dados e algoritmos com JavaScript", "Loiane Groner", "Ciência da computação", 2018));
-        addBook(new Book("Clean Code", "Robert C. Martin", "Software Development", 2008));
-        addBook(new Book("The Pragmatic Programmer", "Andrew Hunt", "Software Development", 1999));
-        addBook(new Book("Design Patterns", "Erich Gamma", "Software Development", 1994));
-        addBook(new Book("Refactoring", "Martin Fowler", "Software Development", 1999));
-        addBook(new Book("Effective Java", "Joshua Bloch", "Software Development", 2001));
-    }
-
     public static Map<String, User> getUserMap() { return userMap;}
 
     public static Map<String, Book> getBookMap() { return bookMap; }
@@ -58,7 +39,7 @@ public class DataPersistence {
 
     public static void addUser(User user) {
         if (userMap.containsKey(user.getEmail())) {
-            //System.out.println(user.getUserDetails());
+            //System.out.println(user.getUserDetails());//imprimir no console os detalhes do usuário
             userMap.put(user.getEmail(), user);
         } else {
             System.out.println("User with the same email already exists.");
@@ -67,7 +48,7 @@ public class DataPersistence {
 
     public static void addBook(Book book) {
         if (bookMap.containsKey(book.getTitle())) {
-            //System.out.println(book.getBookDetails());
+            //System.out.println(book.getBookDetails()); //imprimir no console os detalhes do livro
             bookMap.put(book.getTitle(), book);
         } else {
             System.out.println("Book with the same title already exists.");
@@ -75,10 +56,9 @@ public class DataPersistence {
     }
 
     public static void addLoan(Loan loan) {
-        //System.out.println(loan.getLoanDetails());
+        //System.out.println(loan.getLoanDetails()); //imprimir no console os detalhes do empréstimo
         loanMap.computeIfAbsent(loan.getReaderEmail(), k -> new ArrayList<>()).add(loan);
     }
-
 
     public static void load () throws IOException, ClassNotFoundException {
         System.out.println("LOADING DATA...");
@@ -105,7 +85,7 @@ public class DataPersistence {
             try {
                 while (true) {
                     obj = ois.readObject();
-                    //System.out.println("Object read: " + obj.getClass().getName());
+                    System.out.println("Object read: " + obj.getClass().getName());
 
                     if (obj instanceof Reader) {
                         DataPersistence.userMap.put(((User) obj).getEmail(), (User) obj);
@@ -156,7 +136,6 @@ public class DataPersistence {
             if (oos != null) oos.close();
         }
     }
-
 
     public static void displayAllLoans() {
         for (List<Loan> loans : loanMap.values()) {
